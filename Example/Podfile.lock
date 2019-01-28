@@ -1,16 +1,37 @@
 PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
   - MockAPIData-iOS-SDK (0.1.0)
 
 DEPENDENCIES:
+  - AFNetworking
   - MockAPIData-iOS-SDK (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
 
 EXTERNAL SOURCES:
   MockAPIData-iOS-SDK:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MockAPIData-iOS-SDK: 3e59146e9219ed38cb4a9c4ad5a9963180a9a389
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  MockAPIData-iOS-SDK: 5f744e6dac83930f97c640da2289563d9386cdba
 
-PODFILE CHECKSUM: 60c19e2a5f8fd9ec46cdd90a43f9b656106a174a
+PODFILE CHECKSUM: 3bdef5829a16393aeee116e68603ebbdd23d387b
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.6.0.rc.1

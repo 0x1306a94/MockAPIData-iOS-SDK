@@ -62,10 +62,10 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93E07C81D836624F7F15543A /* Pods-MockAPIData-iOS-SDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockAPIData-iOS-SDK_Example.debug.xcconfig"; path = "Target Support Files/Pods-MockAPIData-iOS-SDK_Example/Pods-MockAPIData-iOS-SDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		9DDFE7CB0B2A2BF377B049CA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		AB5AA23E44664D0A9C6D0B51 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		9DDFE7CB0B2A2BF377B049CA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		AB5AA23E44664D0A9C6D0B51 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		D04AFD7C84393CA4E59C0C99 /* Pods-MockAPIData-iOS-SDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockAPIData-iOS-SDK_Tests.release.xcconfig"; path = "Target Support Files/Pods-MockAPIData-iOS-SDK_Tests/Pods-MockAPIData-iOS-SDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E9985126F7024A55B6539A6C /* MockAPIData-iOS-SDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = "MockAPIData-iOS-SDK.podspec"; path = "../MockAPIData-iOS-SDK.podspec"; sourceTree = "<group>"; };
+		E9985126F7024A55B6539A6C /* MockAPIData-iOS-SDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = "MockAPIData-iOS-SDK.podspec"; path = "../MockAPIData-iOS-SDK.podspec"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F6B7C4E30EFCB18196C6E6BD /* Pods-MockAPIData-iOS-SDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockAPIData-iOS-SDK_Example.release.xcconfig"; path = "Target Support Files/Pods-MockAPIData-iOS-SDK_Example/Pods-MockAPIData-iOS-SDK_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,7 +193,6 @@
 				046C923A7A5F50BDBF4A9AA9 /* Pods-MockAPIData-iOS-SDK_Tests.debug.xcconfig */,
 				D04AFD7C84393CA4E59C0C99 /* Pods-MockAPIData-iOS-SDK_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -326,12 +325,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MockAPIData-iOS-SDK_Example/Pods-MockAPIData-iOS-SDK_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/MockAPIData-iOS-SDK/MockAPIData_iOS_SDK.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MockAPIData_iOS_SDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

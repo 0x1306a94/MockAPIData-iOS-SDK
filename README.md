@@ -22,7 +22,7 @@ pod 'MockAPIData-iOS-SDK'
 
 ## Author
 
-king129, 0x1306a94@gamil.com
+0x1306a94, 0x1306a94@gamil.com
 
 ## License
 
