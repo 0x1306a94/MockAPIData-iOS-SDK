@@ -1,0 +1,16 @@
+PODS:
+  - MockAPIData-iOS-SDK (0.1.0)
+
+DEPENDENCIES:
+  - MockAPIData-iOS-SDK (from `../`)
+
+EXTERNAL SOURCES:
+  MockAPIData-iOS-SDK:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MockAPIData-iOS-SDK: 3e59146e9219ed38cb4a9c4ad5a9963180a9a389
+
+PODFILE CHECKSUM: 60c19e2a5f8fd9ec46cdd90a43f9b656106a174a
+
+COCOAPODS: 1.6.0.beta.2

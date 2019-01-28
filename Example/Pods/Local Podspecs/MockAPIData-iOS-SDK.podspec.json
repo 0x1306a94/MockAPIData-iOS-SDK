@@ -1,0 +1,22 @@
+{
+  "name": "MockAPIData-iOS-SDK",
+  "version": "0.1.0",
+  "summary": "A short description of MockAPIData-iOS-SDK.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/king129/MockAPIData-iOS-SDK",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "king129": "0x1306a94@gamil.com"
+  },
+  "source": {
+    "git": "https://github.com/king129/MockAPIData-iOS-SDK.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MockAPIData-iOS-SDK/Classes/**/*"
+}
