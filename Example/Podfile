@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'MockAPIData-iOS-SDK_Example' do
+  pod 'MockAPIData-iOS-SDK', :path => '../'
+
+  target 'MockAPIData-iOS-SDK_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase'
+  end
+end
