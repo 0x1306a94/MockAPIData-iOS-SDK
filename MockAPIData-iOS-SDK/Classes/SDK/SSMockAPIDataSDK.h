@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SSMockAPIAuthModel.h"
+#import "SSMockAPICommon.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,14 +18,15 @@ typedef NS_ENUM(NSUInteger, SSMockProcessType) {
 
 @interface SSMockAPIDataSDK : NSObject
 @property (nonatomic, assign, readonly) SSMockProcessType processType;
-@property (nonatomic, strong, readonly) SSMockAPIAuthModel *authInfo;
-@property (nonatomic, strong, readonly) NSString *mockHost;
+@property (nonatomic, strong, readonly) SSMockAPICommon *common;
+@property (nonatomic, strong, readonly) NSURL *host;
+@property (nonatomic, strong, readonly) NSURL *mockHost;
 @property (nonatomic, assign) BOOL isEnable;
 + (instancetype)shared;
 
 - (void)enable;
 - (void)disable;
-- (void)setupWithMockHost:(NSString *)mockHost processType:(SSMockProcessType)processType;
+- (void)setupWithHost:(NSURL *)host mockHost:(NSURL *)mockHost processType:(SSMockProcessType)processType;
 - (void)loginWithUserName:(NSString *)userName password:(NSString *)password;
 @end
 

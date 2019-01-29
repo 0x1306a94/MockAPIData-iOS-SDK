@@ -10,10 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class SSMockAPIAuthInfoModel;
+
 @interface SSMockAPIAuthModel : NSObject
+@property (nonatomic, strong) SSMockAPIAuthInfoModel *data;
+@end
+
+@interface SSMockAPIAuthInfoModel : NSObject
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) SSMockAPIUserModel *user;
-+ (instancetype)modelWithDictionary:(NSDictionary *)dict;
 @end
+
+
 
 NS_ASSUME_NONNULL_END

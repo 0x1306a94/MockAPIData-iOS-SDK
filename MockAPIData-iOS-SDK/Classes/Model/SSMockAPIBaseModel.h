@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *errorMsg;
 @property (nonatomic, strong) id data;
 
-+ (instancetype)modelWithDictionary:(NSDictionary *)dict;
 @end
 
 NS_ASSUME_NONNULL_END

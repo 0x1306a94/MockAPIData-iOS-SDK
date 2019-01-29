@@ -1,0 +1,1 @@
+../../../../../MockAPIData-iOS-SDK/Classes/Request/SSRequestClone.h

@@ -14,15 +14,18 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - MockAPIData-iOS-SDK (0.1.0)
+  - MockAPIData-iOS-SDK (0.1.0):
+    - AFNetworking
+    - YYModel
+  - YYModel (1.0.4)
 
 DEPENDENCIES:
-  - AFNetworking
   - MockAPIData-iOS-SDK (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - YYModel
 
 EXTERNAL SOURCES:
   MockAPIData-iOS-SDK:
@@ -30,8 +33,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  MockAPIData-iOS-SDK: 5f744e6dac83930f97c640da2289563d9386cdba
+  MockAPIData-iOS-SDK: 76a7b5f69c26ddcb3993a954cacad63d6ea1d151
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 3bdef5829a16393aeee116e68603ebbdd23d387b
+PODFILE CHECKSUM: feaec1257d6785c9747b0179d2685b30c61916d9
 
 COCOAPODS: 1.6.0.rc.1

@@ -8,11 +8,5 @@
 #import "SSMockAPIBaseModel.h"
 
 @implementation SSMockAPIBaseModel
-+ (instancetype)modelWithDictionary:(NSDictionary *)dict {
-    if (!dict || ![dict isKindOfClass:NSDictionary.class]) return nil;
-    SSMockAPIBaseModel *m = [[SSMockAPIBaseModel alloc] init];
-    [m setValuesForKeysWithDictionary:dict];
-    return m;
-}
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key { }
+
 @end

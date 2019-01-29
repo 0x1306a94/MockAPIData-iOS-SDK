@@ -15,10 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL management;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *email;
-@property (nonatomic, strong) NSString *createAt;
+@property (nonatomic, strong) NSString *createdAt;
 @property (nonatomic, strong) NSString *updateAt;
-
-+ (instancetype)modelWithDictionary:(NSDictionary *)dict;
 @end
 
 NS_ASSUME_NONNULL_END

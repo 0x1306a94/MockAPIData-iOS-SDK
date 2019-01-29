@@ -6,14 +6,21 @@
 //
 
 #import "SSMockAPIDataSDK.h"
+#import "SSMockAPIDataSDK+Private.h"
+
+
 #import "SSMockAPIBaseModel.h"
 #import "SSMockAPIURLProtocol.h"
 
+#import "SSJSONRequestSerializer.h"
+
+#import <YYModel/YYModel.h>
+
 @interface SSMockAPIDataSDK ()
 @property (nonatomic, assign) SSMockProcessType processType;
-@property (nonatomic, strong) SSMockAPIAuthModel *authInfo;
-@property (nonatomic, strong) NSString *mockHost;
-
+@property (nonatomic, strong) SSMockAPICommon *common;
+@property (nonatomic, strong) NSURL *host;
+@property (nonatomic, strong) NSURL *mockHost;
 @property (nonatomic, strong) NSURLSessionDataTask *loginTask;
 @end
 
@@ -29,7 +36,7 @@
 
 - (instancetype)init {
     if (self == [super init]) {
-
+        self.common = [[SSMockAPICommon alloc] init];
     }
     return self;
 }
@@ -44,49 +51,32 @@
     [SSMockAPIURLProtocol ss_unregister];
 }
 
-- (void)setupWithMockHost:(NSString *)mockHost processType:(SSMockProcessType)processType {
+- (void)setupWithHost:(NSURL *)host mockHost:(NSURL *)mockHost processType:(SSMockProcessType)processType {
+    NSParameterAssert(host);
+    NSParameterAssert(mockHost);
+    self.host = host;
     self.mockHost = mockHost;
     self.processType = processType;
+    self.sessionManager = [[SSHTTPSessionManager alloc] initWithBaseURL:self.host];
+    self.sessionManager.requestSerializer = [SSJSONRequestSerializer serializer];
+    self.sessionManager.requestSerializer.timeoutInterval = 60.0;
+    self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
 
 }
 - (void)loginWithUserName:(NSString *)userName password:(NSString *)password {
-    if (self.mockHost.length == 0) {
-        @throw [NSException exceptionWithName:@"SSMockAPIDataSDK" reason:@"请使用 setupWithMockHost:processType: API 初始化 SDK" userInfo:nil];
+    if (!self.host || !self.mockHost) {
+        @throw [NSException exceptionWithName:@"SSMockAPIDataSDK" reason:@"请使用 setupWithHost:mockHost:processType: API 初始化 SDK" userInfo:nil];
         return;
     }
-    NSParameterAssert(userName);
-    NSParameterAssert(password);
-    NSURL *baseURL = [NSURL URLWithString:self.mockHost];
-    NSURL *url = [baseURL URLByAppendingPathComponent:@"login"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:60.0];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setHTTPMethod:@"POST"];
-    NSDictionary *mapData = @{@"userName" :  userName, @"password" : password};
-    NSError *error = nil;
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
-    [request setHTTPBody:postData];
-
-    self.loginTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"登录出错: %@", error);
-        } else {
-            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-            SSMockAPIBaseModel *result = [SSMockAPIBaseModel modelWithDictionary:dict];
-            if (result && result.state == 1 && result.errorCode == 0) {
-                SSMockAPIAuthModel *auth = [SSMockAPIAuthModel modelWithDictionary:result.data];
-                if (auth.token.length > 0 && auth.user) {
-                    self.authInfo = auth;
-                    NSLog(@"登录成功: %@", result.data);
-                }
-            } else {
-                NSLog(@"登录出错: errorCode: %ld, errorMsg: %@", result.errorCode, result.errorMsg);
-            }
+    NSParameterAssert(userName.length > 0);
+    NSParameterAssert(password.length > 0);
+    [self.sessionManager POST:kLoginURL parameters:@{@"userName" :  userName, @"password" : password} responseCls:SSMockAPIAuthModel.class success:^(SSMockAPIAuthModel *response) {
+        if (response.data.token.length > 0 && response.data.user) {
+            self.authInfo = response.data;
+            NSLog(@"登录成功: %@", response.data.token);
         }
-        self.loginTask = nil;
+    } failure:^(NSError *error) {
+        NSLog(@"登录出错: %@", error);
     }];
-    [self.loginTask resume];
 }
 @end
