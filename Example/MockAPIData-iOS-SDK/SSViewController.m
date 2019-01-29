@@ -23,7 +23,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [[SSMockAPIDataSDK shared] setupWithHost:[NSURL URLWithString:@"http://127.0.0.1:9999"] mockHost:[NSURL URLWithString:@"http://127.0.0.1:8888"] processType:SSMockProcessTypeServer];
+    [[SSMockAPIDataSDK shared] setupWithHost:[NSURL URLWithString:@"http://127.0.0.1:9999"] mockHost:[NSURL URLWithString:@"http://127.0.0.1:8888"] processType:SSMockProcessTypeLocal];
     [[SSMockAPIDataSDK shared] enable];
     [[SSMockAPIDataSDK shared] loginWithUserName:@"0x1306a94" password:@"123456"];
 }

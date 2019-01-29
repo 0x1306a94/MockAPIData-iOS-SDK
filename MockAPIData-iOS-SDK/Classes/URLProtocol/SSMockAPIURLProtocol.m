@@ -45,9 +45,10 @@ static NSString *const SSHTTP = @"SPRHTTP";
     if ([NSURLProtocol propertyForKey:SSHTTP inRequest:request]) {
         return NO;
     }
+    // 过滤 mock dashboard 以及 mock 相关接口
     if ([request.URL.absoluteString containsString:[SSMockAPIDataSDK shared].host.absoluteString]
         || [request.URL.absoluteString containsString:[SSMockAPIDataSDK shared].mockHost.absoluteString]) {
-        // 过滤mock dashboard 相关接口
+        
         return NO;
     }
     // 检查拉取的项目
@@ -58,7 +59,7 @@ static NSString *const SSHTTP = @"SPRHTTP";
             return YES;
         }
     }
-    return YES;
+    return NO;
 }
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
     NSMutableURLRequest *newReq = [request mutableCopy];

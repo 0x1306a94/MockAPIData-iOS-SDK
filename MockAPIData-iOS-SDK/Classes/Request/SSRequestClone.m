@@ -22,8 +22,10 @@
     }
     if (!matchProject || matchProject.key.length == 0) return request;
 
-    NSMutableURLRequest *newReq = request;
-    if (![request isKindOfClass:NSMutableURLRequest.class]) {
+    NSMutableURLRequest *newReq = nil;
+    if ([request isKindOfClass:NSMutableURLRequest.class]) {
+        newReq = (NSMutableURLRequest *)request;
+    } else {
         newReq = [request mutableCopy];
     }
     NSURLComponents *compnents = [NSURLComponents componentsWithString:request.URL.absoluteString];
@@ -43,7 +45,7 @@
         compnents.host = [SSMockAPIDataSDK shared].mockHost.host;
         compnents.scheme = [SSMockAPIDataSDK shared].mockHost.scheme;
         compnents.port = [SSMockAPIDataSDK shared].mockHost.port;
-        compnents.path = [NSString stringWithFormat:@"/%ld/%ld", rule.projectId, rule.id];
+        compnents.path = [NSString stringWithFormat:@"/mock/%ld/%ld", rule.projectId, rule.id];
         newReq.URL = compnents.URL;
         if ([SSMockAPIDataSDK shared].authInfo.token .length > 0) {
             [newReq setValue:[SSMockAPIDataSDK shared].authInfo.token forHTTPHeaderField:@"Mock-Token"];
